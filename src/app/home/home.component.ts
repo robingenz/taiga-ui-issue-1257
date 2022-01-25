@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { TuiNotificationsService } from '@taiga-ui/core';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    @Inject(TuiNotificationsService)
+    private readonly notificationsService: TuiNotificationsService
+  ) { }
 
   ngOnInit(): void {
   }
 
-  showNotification(): void {}
+  showNotification(): void {
+    this.notificationsService
+      .show('A simple option', {
+          label: 'With a heading!',
+      })
+      .subscribe();
+  }
 
 }
