@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TuiNotificationsService } from '@taiga-ui/core';
+import { TuiNotificationModule, TuiNotificationsService } from '@taiga-ui/core';
 import { createSpyObj } from 'src/tests/helpers';
 
 import { HomeComponent } from './home.component';
@@ -16,7 +16,8 @@ describe('HomeComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [ HomeComponent ],
-      providers: [ { provide: TuiNotificationsService, useValue: notificationsServiceSpy } ]
+      providers: [ { provide: TuiNotificationsService, useValue: notificationsServiceSpy } ],
+      imports: [ TuiNotificationModule ]
     })
     .compileComponents();
   });
